@@ -1,12 +1,21 @@
 ﻿using System;
-
+using System.Collections;
+using System.IO;
+using System.Threading;
 namespace Ucu.Poo.GameOfLife
 {
     class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Game game = new Game(BoardCreator.GenerateBoard());
+            while (true)
+            {
+                game.NewGen();
+                BoardPrinter.PrintBoard(game.Board);
+                Thread.Sleep(300);
+            }
+    
         }
     }
 }
